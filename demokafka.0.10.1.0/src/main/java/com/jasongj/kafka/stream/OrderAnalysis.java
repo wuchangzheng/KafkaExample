@@ -75,7 +75,7 @@ public class OrderAnalysis {
 						() -> OrderUserItemStatic.from(0, 0.00),
 						(aggKey, value, aggregate) -> OrderUserItemStatic.from(aggregate.quantity+value.quantity,
 								aggregate.amount+value.quantity*value.itemPrice), 
-						TimeWindows.of(1000).advanceBy(1000),
+						TimeWindows.of(1000*3600).advanceBy(1000),
 						SerdesFactory.serdFrom(OrderUserItemStatic.class), 
 						"Totoal").toStream()
 				
@@ -83,7 +83,7 @@ public class OrderAnalysis {
 					return new KeyValue<String, String>(window.key(), String.format("%s, 销售数量 %s ,销售额=%s, start=%s, end=%s\n",window.key(), value.quantity,value.amount, new Date(window.window().start()), new Date(window.window().end())));
 				});
 		
-			
+		//kStream.
 			
 				kStream.foreach((k,v)->System.out.println(v));
 				
