@@ -24,6 +24,7 @@ public class OrderTimestampExtractor implements TimestampExtractor {
 			return ((JsonNode) record.value()).get("transactionDate").longValue();
 		}
 		if (value instanceof Item) {
+			//record.
 			return LocalDateTime.of(2015, 12,11,1,0,10).toEpochSecond(ZoneOffset.UTC) * 1000;
 		}
 		if (value instanceof User) {

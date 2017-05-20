@@ -49,7 +49,7 @@ public class OrderProducer {
 		List<String> lines = IOUtils.readLines(inputStream, Charset.forName("UTF-8"));
 		List<Order> orders = lines.stream()
 			.filter(StringUtils::isNoneBlank)
-			.map((String line) -> line.split("\\s*,\\s*"))
+			.map(( line) -> line.split("\\s*,\\s*"))
 			.filter((String[] values) -> values.length == 4)
 			.map((String[] values) -> new Order(values[0], values[1], LocalDateTime.parse(values[2], dataTimeFormatter).toEpochSecond(ZoneOffset.UTC) * 1000, Integer.parseInt(values[3])))
 			.collect(Collectors.toList());

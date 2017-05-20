@@ -42,10 +42,13 @@ public class ItemProducer {
 		List<String> lines = IOUtils.readLines(OrderProducer.class.getResourceAsStream("/items.csv"), Charset.forName("UTF-8"));
 		List<Item> items = lines.stream()
 			.filter(StringUtils::isNoneBlank)
-			.map((String line) -> line.split("\\s*,\\s*"))
+			.map((line) -> line.split("\\s*,\\s*"))
 			.filter((String[] values) -> values.length == 4)
 			.map((String[] values) -> new Item(values[0], values[1], values[2], Double.parseDouble(values[3])))
 			.collect(Collectors.toList());
+		
+		
+		
 		return items;
 	}
 
