@@ -120,10 +120,10 @@ public class OrderAnalysis {
 					for (ItemStatic t:v.items){
 						System.out.println("品名="+t.itemName+" ,数量:"+t.quantity+" ,单价:"+t.itemPrice + " ,总额:"+t.amount +" ,排名:"+rank);
 						rank++;
-						System.out.println();
+						
 					}
 					
-					
+					System.out.println();
 					
 				});
 				
